@@ -1,6 +1,22 @@
 {
   "compilerOptions": {
-    "module": "ESNext"
+    /* Language and Environment */
+    "target": "ESNext",
+
+    /* Modules */
+    "module": "ESNext",
+    "types": [],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": "./",
+    "declaration": true,
+    "moduleResolution": "node",
+
+    /* Type Checking */
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx"
   },
-  "include": ["./src"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
