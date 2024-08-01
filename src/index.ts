@@ -1,6 +1,2 @@
-const test = () => {}
-    const a = 1;
-
-    console.log(a);
-
-test();
+export * from './Button';
+export * from './Input';
