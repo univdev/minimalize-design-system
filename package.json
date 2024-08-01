@@ -55,5 +55,8 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
   }
 }
