@@ -7,7 +7,6 @@ The Minimalize Design System is a minimal React-based design system created as a
 - [Minimalize Design System](#minimalize-design-system)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
-  - [Usage](#usage)
   - [Scripts](#scripts)
   - [Dependencies](#dependencies)
     - [Core Dependencies](#core-dependencies)
@@ -22,22 +21,6 @@ The Minimalize Design System is a minimal React-based design system created as a
 - Storybook integration for easy component development and documentation
 - ESLint and Prettier for code quality and consistency
 - Inspired by Material-UI (MUI)
-
-## Usage
-
-To use the components from the Minimalize Design System, import them into your project:
-
-```jsx
-import { Button } from 'minimalize-design-system';
-
-const App = () => (
-  <div>
-    <Button>Click Me</Button>
-  </div>
-);
-
-export default App;
-```
 
 ## Scripts
 
