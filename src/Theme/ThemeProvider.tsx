@@ -1,16 +1,14 @@
 import { ReactNode } from "react";
-import { ThemeProvider as EmotionThemeProvider, Theme } from "@emotion/react";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { Theme } from "./Theme";
 
 export interface ThemeProviderProps {
   children?: ReactNode;
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const theme: Theme = {
-  };
-
   return (
-    <EmotionThemeProvider theme={theme}>
+    <EmotionThemeProvider theme={Theme}>
       { children }
     </EmotionThemeProvider>
   );
