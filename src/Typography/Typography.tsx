@@ -2,6 +2,10 @@ import { ComponentPropsWithoutRef, ReactElement, ReactNode } from "react";
 import styled from '@emotion/styled';
 import { GenerateStringUnion } from "../types/common";
 import { clsx } from "clsx";
+import { css } from "@emotion/react";
+import { getStylesFromVariants } from "../Utils/common";
+import { TypographyStyles } from "./Typography.styles";
+import { useTheme } from "../useTheme";
 
 export type TypographyVariantsOverrides = {
   'display-semibold-64': true;
@@ -15,12 +19,6 @@ export type TypographyVariantsOverrides = {
   'subtitle02-semibold-20': true;
   'subtitle02-medium-20': true;
   'subtitle02-regular-20': true;
-  'body01strong-semibold-18': true;
-  'body01strong-medium-18': true;
-  'body01strong-regular-18': true;
-  'body02strong-semibold-16': true;
-  'body02strong-medium-16': true;
-  'body02strong-regular-16': true;
   'body01-regular-18': true;
   'body02-regular-16': true;
   'caption01-semibold-14': true;
@@ -44,13 +42,13 @@ export type TypographyColorOverrides = {
 export type TypographyElementType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'b';
 
 export type TypographyStylesProperties = {
-  variants?: GenerateStringUnion<TypographyVariantsOverrides>;
+  variant?: GenerateStringUnion<TypographyVariantsOverrides>;
   color?: GenerateStringUnion<TypographyColorOverrides>;
-  children?: ReactNode;
 };
 
 export type TypographyProps<Element extends TypographyElementType> = {
   as?: Element;
+  children?: ReactNode;
 } & TypographyStylesProperties & ComponentPropsWithoutRef<Element>;
 
 export function Typography<Element extends TypographyElementType = 'p'>({
@@ -58,12 +56,21 @@ export function Typography<Element extends TypographyElementType = 'p'>({
   style,
   as = 'p' as Element,
   color = 'primary',
-  variants = 'body01strong-regular-18',
+  variant = 'body01-regular-18',
   children,
   ...props
 }: TypographyProps<Element>): ReactElement {
+  const theme = useTheme();
+  const styledComponentClass = css({
+    ...getStylesFromVariants<TypographyStylesProperties>(
+      { variant, color },
+      theme.componentStylesVariants?.Typography
+    ),
+  });
+
+  console.log(theme.componentStylesVariants?.Typography);
   return (
-    <Wrapper as={as} className={clsx('Typography', className)} style={{ ...style }} { ...props }>
+    <Wrapper as={as} className={clsx('Typography', className, styledComponentClass)} style={{ ...style }} { ...props }>
       { children }
     </Wrapper>
   );
