@@ -7,6 +7,7 @@ export * from './Input';
 export * from './Colors';
 export * from './List';
 export * from './Link';
+export * from './Animation';
 
 /** Layouts */
 export * from './Layout';
