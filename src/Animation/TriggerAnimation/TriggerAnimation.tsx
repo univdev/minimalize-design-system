@@ -6,6 +6,7 @@ import { Show } from "../../Show";
 
 export type TriggerAnimationProps<Key extends keyof AnimationVariants> = {
   as?: keyof JSX.IntrinsicElements;
+  animationKey: string;
   className?: string;
   style?: CSSProperties;
   show: boolean;
@@ -19,6 +20,7 @@ export type TriggerAnimationProps<Key extends keyof AnimationVariants> = {
 export function TriggerAnimation<Key extends keyof AnimationVariants>({
   as = 'div',
   className,
+  animationKey,
   style,
   show,
   variants,
@@ -32,18 +34,22 @@ export function TriggerAnimation<Key extends keyof AnimationVariants>({
 
   return (
     <AnimatePresence>
-      <Show when={show}>
-        <MotionWrapper
-          className={clsx('TriggerAnimation', className)}
-          style={style}
-          variants={currentVariants}
-          initial={enabledName}
-          animate={enabledName}
-          exit={disabledName}
-        >
-          { children }
-        </MotionWrapper>   
-      </Show>
+      {
+        show
+          && (
+            <MotionWrapper
+              key={animationKey}
+              className={clsx('TriggerAnimation', className)}
+              style={style}
+              variants={currentVariants}
+              initial={enabledName}
+              animate={enabledName}
+              exit={disabledName}
+            >
+              { children }
+            </MotionWrapper>
+          )
+      }
     </AnimatePresence>
   );
 }

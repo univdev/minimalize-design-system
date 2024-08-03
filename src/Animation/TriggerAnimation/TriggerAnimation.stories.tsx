@@ -12,10 +12,11 @@ export default meta;
 export const Default: StoryObj<typeof TriggerAnimation> = {
   args: {
     variants: AnimationVariants,
+    animationKey: 'fade',
     type: 'fade',
     enabledName: 'in',
     disabledName: 'out',
-    show: true,
+    show: false,
     children: 'Hello world!',
   },
 };
